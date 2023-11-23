@@ -140,7 +140,7 @@ const initApi = (req) => {
 //Link Resolver
 const handleLinkResolver = (doc) => {
   if (doc.type === 'product') {
-    return `/detail/${doc.slug}`;
+    return `/details/${doc.slug}`;
   }
 
   if (doc.type === 'about') {
@@ -267,7 +267,7 @@ app.get('/about', async (req, res) => {
   });
 });
 
-app.get('/detail/:uid', async (req, res) => {
+app.get('/details/:uid', async (req, res) => {
   const api = await initApi(req);
   const defaults = await handleRequest(api);
 
@@ -275,9 +275,9 @@ app.get('/detail/:uid', async (req, res) => {
     fetchLinks: 'collection.title',
   });
 
-  // console.log(product);
+  console.log(product);
 
-  res.render('pages/detail', {
+  res.render('pages/details', {
     ...defaults,
     product,
   });
