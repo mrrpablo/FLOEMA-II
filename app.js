@@ -209,9 +209,9 @@ const handleRequest = async (api) => {
 
   const assets = [];
 
-  //   home.data.gallery.forEach((item) => {
-  //     assets.push(item.image.url);
-  //   });
+    home.data.gallery.forEach((item) => {
+      assets.push(item.image.url);
+    });
 
   about.data.gallery.forEach((item) => {
     assets.push(item.image.url);
@@ -225,11 +225,11 @@ const handleRequest = async (api) => {
     }
   });
 
-  //   collections.forEach((collection) => {
-  //     collection.data.list.forEach((item) => {
-  //       assets.push(item.product.data.image.url);
-  //     });
-  //   });
+    collections.forEach((collection) => {
+      collection.data.list.forEach((item) => {
+        assets.push(item.product.data.image.url);
+      });
+    });
 
   // console.log(collections);
 
@@ -283,14 +283,14 @@ app.get('/detail/:uid', async (req, res) => {
   });
 });
 
-// app.get('/collections', async (req, res) => {
-//   const api = await initApi(req);
-//   const defaults = await handleRequest(api);
+app.get('/collections', async (req, res) => {
+  const api = await initApi(req);
+  const defaults = await handleRequest(api);
 
-//   res.render('pages/collections', {
-//     ...defaults,
-//   });
-// });
+  res.render('pages/collections', {
+    ...defaults,
+  });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
